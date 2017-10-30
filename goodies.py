@@ -20,5 +20,5 @@ class RandomGoody(Goody):
 
     def take_turn(self, obstruction, _ping_response):
         ''' Ignore any ping information, just choose a random direction to walk in, or ping '''
-        possibilities = [direction for direction in [UP, DOWN, LEFT, RIGHT] if not obstruction[direction]] + [PING]
+        possibilities = [direction for direction in [UP, UP, RIGHT, DOWN, LEFT, RIGHT] if not obstruction[direction]] + [PING]
         return random.choice(possibilities)
