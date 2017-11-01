@@ -52,8 +52,8 @@ def stats_example(total_games):
             break
         result, _rounds = game.play()
         results[result] += 1
-      #  if game_number % 10 == 0:
-      #      print(game_number, "/", total_games, ":", dict(results))
+        if game_number % 10000 == 0:
+            print(game_number, "/", total_games, ":", dict(results))
 
     print(dict(results))
 
@@ -68,5 +68,5 @@ def gui_example():
 if __name__ == "__main__":
     # Uncomment whichever example you want to run
     #text_example()
-    stats_example(10000)
+    stats_example(100000)
     #gui_example()

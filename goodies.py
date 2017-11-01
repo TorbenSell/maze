@@ -5,6 +5,7 @@
 '''
 
 import random
+import math
 
 from maze import Goody, UP, DOWN, LEFT, RIGHT, STAY, PING
 
@@ -35,6 +36,7 @@ class TorBenGoody(Goody):
         self.position_x = 0
         self.position_y = 0
         self.withinmiddlepoint = False
+        self.treshold = 0.7
 
     def take_turn(self, obstruction, _ping_response):
         ''' Ignore any ping information, just choose a random direction to walk in, or ping '''
@@ -71,8 +73,8 @@ class TorBenGoody(Goody):
         
         if self.withinmiddlepoint == False:
             u = random.uniform(0,1)
-            if u<0.7:
-                u = u/0.7
+            if u<self.threshold:
+                u = u/self.threshold
                 if u < abs(self.middlepoint_x-self.position_x)/(abs(self.middlepoint_x-self.position_x)+abs(self.middlepoint_y-self.position_y)):
                     if self.middlepoint_x-self.position_x > 0 and not obstruction[RIGHT]:
                         self.position_x += 1
@@ -120,6 +122,7 @@ class TorBenGoody2(Goody):
         self.position_x = 0
         self.position_y = 0
         self.withinmiddlepoint = False
+        self.treshold = 0.7
 
     def take_turn(self, obstruction, _ping_response):
         ''' Ignore any ping information, just choose a random direction to walk in, or ping '''
@@ -150,16 +153,16 @@ class TorBenGoody2(Goody):
                     self.corner = 'top'
         
         '''Check whether Goody has reached meeting area, if not, go there, o/w go to side'''
-        if abs(self.middlepoint_x-self.position_x)**2+abs(self.middlepoint_y-self.position_y)**2<2:
-            self.withinmiddlepoint = True
+        if abs(self.middlepoint_x-self.position_x)+abs(self.middlepoint_y-self.position_y)<1:
+            self.withinmiddlepoint = True            
         else:
             self.withinmiddlepoint = False
         
         
         if self.withinmiddlepoint == False:
             u = random.uniform(0,1)
-            if u<0.7:
-                u = u/0.7
+            if u<self.treshold:
+                u = u/self.treshold
                 if u < abs(self.middlepoint_x-self.position_x)/(abs(self.middlepoint_x-self.position_x)+abs(self.middlepoint_y-self.position_y)):
                     if self.middlepoint_x-self.position_x > 0 and not obstruction[RIGHT]:
                         self.position_x += 1
