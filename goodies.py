@@ -36,7 +36,7 @@ class TorBenGoody(Goody):
         self.position_x = 0
         self.position_y = 0
         self.withinmiddlepoint = False
-        self.treshold = 0.7
+        self.treshold = 0.5
 
     def take_turn(self, obstruction, _ping_response):
         ''' Ignore any ping information, just choose a random direction to walk in, or ping '''
@@ -67,7 +67,7 @@ class TorBenGoody(Goody):
                     self.corner = 'topright'
         
         '''Check whether goody has reached meeting area, if not, proceed there, o/w go to side'''
-        if abs(self.middlepoint_x-self.position_x)**2+abs(self.middlepoint_y-self.position_y)**2<2:
+        if abs(self.middlepoint_x-self.position_x)+abs(self.middlepoint_y-self.position_y)<4:
             self.withinmiddlepoint = True
         
         
