@@ -47,7 +47,7 @@ def stats_example(total_games):
     ''' Plays many games, printing cumulative and final stats '''
 
     results = defaultdict(int)
-    for game_number, game in enumerate(game_repeater(EXAMPLE_MAZE, TorBenGoody2, TorBenGoody2, RandomBaddy)):
+    for game_number, game in enumerate(game_repeater(EXAMPLE_MAZE, TorBenGoody, TorBenGoody, RandomBaddy)):
         if game_number == total_games:
             break
         result, _rounds = game.play()

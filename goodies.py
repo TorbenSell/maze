@@ -36,7 +36,7 @@ class TorBenGoody(Goody):
         self.position_x = 0
         self.position_y = 0
         self.withinmiddlepoint = False
-        self.treshold = 0.5
+        self.threshold = 0.5
 
     def take_turn(self, obstruction, _ping_response):
         ''' Ignore any ping information, just choose a random direction to walk in, or ping '''
